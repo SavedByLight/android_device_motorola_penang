@@ -145,6 +145,7 @@ BOARD_USES_QCOM_FBE_DECRYPTION := true
 # USB
 TW_USE_NEW_MINADBD := true
 TW_EXCLUDE_DEFAULT_USB_INIT := true
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.0/lun.%d/file
 
 # Misc
 TW_INCLUDE_REPACKTOOLS := true
