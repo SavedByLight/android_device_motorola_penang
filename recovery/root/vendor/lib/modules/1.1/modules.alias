@@ -1,7 +1,5 @@
 # Aliases extracted from modules themselves.
 alias platform:fpsensor-drivers fpsensor_spi_tee
-alias lzo lzo
-alias crypto-lzo lzo
 alias i2c:rt1711h tcpc_rt1711h
 alias i2c:rt1715 tcpc_rt1711h
 alias i2c:rt1716 tcpc_rt1711h
@@ -154,8 +152,6 @@ alias i2c:sx937x sx937x_sar
 alias platform:mmi_sys_temp mmi_sys_temp
 alias of:N*T*Cmmi,sys-temp mmi_sys_temp
 alias of:N*T*Cmmi,sys-tempC* mmi_sys_temp
-alias lzo-rle lzo_rle
-alias crypto-lzo-rle lzo_rle
 alias of:N*T*Cqcom,msm-audio-ion q6_dlkm
 alias of:N*T*Cqcom,msm-audio-ionC* q6_dlkm
 alias of:N*T*Cqcom,msm-audio-ion-cma q6_dlkm

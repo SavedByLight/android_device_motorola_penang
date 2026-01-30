@@ -26,34 +26,23 @@
 #
 import /init.recovery.qcom_decrypt.rc
 
-on early-init
-    insmod /lib/modules/mmi_annotate.ko
-    insmod /lib/modules/mmi_info.ko
-    insmod /lib/modules/cw2217b_fg_mmi.ko
-    insmod /lib/modules/adapter_class.ko
-    insmod /lib/modules/mmi_charger.ko
-    insmod /lib/modules/mmi_discrete_charger_class.ko
-    insmod /lib/modules/sgm4154x_charger.ko
-    insmod /lib/modules/bq2589x_charger.ko
-    insmod /lib/modules/mmi_discrete_charger.ko
-    insmod /lib/modules/qpnp_adaptive_charge.ko
-    insmod /lib/modules/tcpc_class.ko
-    insmod /lib/modules/tcpc_sgm7220.ko
-    insmod /lib/modules/tcpc_rt1711h.ko
-    insmod /lib/modules/rt_pd_manager.ko
-on boot
-    start health-hal-2-1
-    
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
-    mount vfat /dev/block/bootdevice/by-name/modem${ro.boot.slot_suffix} /firmware ro
-    export LD_LIBRARY_PATH /sbin:/vendor/lib64:/vendor/lib64/hw
 
-service vendor.boot-hal-1-1 /vendor/bin/hw/android.hardware.boot@1.1-service
-    interface android.hardware.boot@1.0::IBootControl default
-    interface android.hardware.boot@1.1::IBootControl default
-    class early_hal
-    user root
-    group root
-    seclabel u:r:recovery:s0
+    # Mount firmware
+    mkdir /firmware
+    mount vfat /dev/block/bootdevice/by-name/modem${ro.boot.slot_suffix} /firmware ro
+
+on boot
+    start health-hal-2-1
+
+on post-fs
+    start boot-hal-1-1
+
+on property:twrp.modules.loaded=true
+    # Load ADSP firmware for PMIC
+    wait /sys/kernel/boot_adsp/boot
+    write /sys/kernel/boot_adsp/boot 1
+    wait /sys/class/power_supply/battery
+    umount /firmware

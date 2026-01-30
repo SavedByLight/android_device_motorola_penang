@@ -9,6 +9,4 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/twrp_penang.mk
 
 COMMON_LUNCH_CHOICES := \
-    twrp_penang-user \
-    twrp_penang-userdebug \
     twrp_penang-eng

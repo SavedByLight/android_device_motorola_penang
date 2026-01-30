@@ -22,8 +22,3 @@ PRODUCT_MODEL := Holi for arm64
 PRODUCT_MANUFACTURER := motorola
 
 PRODUCT_GMS_CLIENTID_BASE := android-motorola
-
-PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRIVATE_BUILD_DESC="penang_g-user 11 U1TPS34.29-83-6-1 f01ec release-keys"
-
-BUILD_FINGERPRINT := motorola/penang_g/penang:11/U1TPS34.29-83-6-1/f01ec:user/release-keys
