@@ -170,7 +170,7 @@ TW_INCLUDE_LIBRESETPROP := true
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
 
 # Modules
-TW_LOAD_VENDOR_MODULES_EXCLUDE_GKI := true
+TW_LOAD_VENDOR_MODULES := $(shell echo \"$(shell ls $(DEVICE_PATH)/recovery/root/lib/modules/1.1)\")
 TW_LOAD_VENDOR_BOOT_MODULES := true
 
 # Version
