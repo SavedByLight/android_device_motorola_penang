@@ -39,10 +39,3 @@ on boot
 
 on post-fs
     start boot-hal-1-1
-
-on property:twrp.modules.loaded=true
-    # Load ADSP firmware for PMIC
-    wait /sys/kernel/boot_adsp/boot
-    write /sys/kernel/boot_adsp/boot 1
-    wait /sys/class/power_supply/battery
-    umount /firmware
