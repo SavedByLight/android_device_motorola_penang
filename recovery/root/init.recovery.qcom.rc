@@ -26,6 +26,22 @@
 #
 import /init.recovery.qcom_decrypt.rc
 
+on early-init
+    insmod /lib/modules/1.1/mmi_annotate.ko
+    insmod /lib/modules/1.1/mmi_info.ko
+    insmod /lib/modules/1.1/cw2217b_fg_mmi.ko
+    insmod /lib/modules/1.1/adapter_class.ko
+    insmod /lib/modules/1.1/mmi_charger.ko
+    insmod /lib/modules/1.1/mmi_discrete_charger_class.ko
+    insmod /lib/modules/1.1/sgm4154x_charger.ko
+    insmod /lib/modules/1.1/bq2589x_charger.ko
+    insmod /lib/modules/1.1/mmi_discrete_charger.ko
+    insmod /lib/modules/1.1/qpnp_adaptive_charge.ko
+    insmod /lib/modules/1.1/tcpc_class.ko
+    insmod /lib/modules/1.1/tcpc_sgm7220.ko
+    insmod /lib/modules/1.1/tcpc_rt1711h.ko
+    insmod /lib/modules/1.1/rt_pd_manager.ko
+
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
