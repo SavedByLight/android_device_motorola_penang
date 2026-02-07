@@ -10,16 +10,8 @@ DEVICE_PATH := device/motorola/penang
 # For building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
-
-# A/B
-AB_OTA_UPDATER := true
-AB_OTA_PARTITIONS += \
-    odm \
-    system \
-    product \
-    system_ext \
-    vendor
 BOARD_USES_RECOVERY_AS_BOOT := true
+TARGET_NO_RECOVERY := true
 
 # Architecture
 TARGET_ARCH := arm64
@@ -54,7 +46,7 @@ TW_THEME := portrait_hdpi
 TARGET_SCREEN_DENSITY := 270
 TARGET_SCREEN_HEIGHT := 1600
 TARGET_SCREEN_WIDTH := 720
-TW_BRIGHTNESS_PATH := "/sys/devices/platform/soc/5e00000.qcom,mdss_mdp/backlight/panel0-backlight/brightness"
+TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
 TW_MAX_BRIGHTNESS := 599
 TW_DEFAULT_BRIGHTNESS := 275
 TW_FRAMERATE := 120
@@ -161,18 +153,17 @@ TW_EXCLUDE_APEX := true
 TW_NO_BIND_SYSTEM := true
 TW_PREPARE_DATA_MEDIA_EARLY := true
 TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
-TW_CUSTOM_CPU_TEMP_PATH := "/sys/devices/virtual/thermal/thermal_zone9/temp"
-TW_USE_LEGACY_BATTERY_SERVICES := true
+TW_CUSTOM_CPU_TEMP_PATH := "/sys/devices/virtual/thermal/thermal_zone53/temp"
 
 # Properties
 TW_NO_LEGACY_PROPS := true
 TW_INCLUDE_RESETPROP := true
 TW_INCLUDE_LIBRESETPROP := true
+TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
 
 # Modules
-TW_LOAD_VENDOR_MODULES := $(shell echo \"$(shell ls $(DEVICE_PATH)/recovery/root/lib/modules/1.1)\")
-TW_LOAD_VENDOR_BOOT_MODULES := true
+TW_LOAD_VENDOR_MODULES := $(shell echo \"$(shell ls $(DEVICE_PATH)/prebuilt/modules)\")
 
 # Version
 TW_DEVICE_VERSION := SavedByLight
