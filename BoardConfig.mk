@@ -5,7 +5,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-DEVICE_PATH := device/motorola/penang
+DEVICE_PATH := device/motorola/penang_g
 
 # For building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
@@ -78,9 +78,6 @@ BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 # Kernel
 BOARD_BOOTIMG_HEADER_VERSION := 3
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
-BOARD_KERNEL_IMAGE_NAME := Image
-TARGET_KERNEL_CONFIG := penang_defconfig
-TARGET_KERNEL_SOURCE := kernel/motorola/penang
 
 # Kernel - prebuilt
 TARGET_FORCE_PREBUILT_KERNEL := true
@@ -135,7 +132,7 @@ PLATFORM_VERSION_LAST_STABLE := $(PLATFORM_VERSION)
 BOARD_USES_QCOM_FBE_DECRYPTION := true
 
 # USB
-TW_USE_NEW_MINADBD := true
+#TW_USE_NEW_MINADBD := true
 TW_EXCLUDE_DEFAULT_USB_INIT := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.0/lun.%d/file
 

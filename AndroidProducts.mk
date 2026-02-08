@@ -6,7 +6,7 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/twrp_penang.mk
+    $(LOCAL_DIR)/twrp_penang_g.mk
 
 COMMON_LUNCH_CHOICES := \
-    twrp_penang-eng
+    twrp_penang_g-eng
